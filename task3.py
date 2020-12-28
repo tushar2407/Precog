@@ -7,7 +7,7 @@ client = MongoClient("mongodb://localhost:27017/")
 mydb = client["stackoverflow"]
 
 # doing tags
-"""
+
 mycol = mydb["tags"]
 tree = ET.parse('stackoverflow.com/Tags.xml')
 stud = tree.findall('row')
@@ -35,7 +35,7 @@ for i in stud:
     }
     mycol.insert_one(x)
     print(x['Id'])
-"""
+
 
 #doing users
 mycol = mydb['users']
@@ -98,3 +98,32 @@ for i in tqdm(stud):
     'ProfileImageUrl': 'https://www.gravatar.com/avatar/51d623f33f8b83095db84ff35e15dbe8?s=128&amp;d=identicon&amp;r=PG', 
     'AccountId': '1'}
 """
+
+# doing badges
+mycol = mydb['badges']
+tree = ET.parse('stackoverflow.com/Badges.xml')
+stud = tree.findall('row')
+print(len(stud))
+for i in tqdm(stud):
+    x = i.attrib
+    mycol.insert_one(x)
+
+
+# doing Votes
+mycol = mydb['votes']
+tree = ET.parse('stackoverflow.com/Votes.xml')
+stud = tree.findall('row')
+print(len(stud))
+for i in tqdm(stud):
+    x = i.attrib
+    mycol.insert_one(x)
+
+
+# doing Posts
+mycol = mydb['posts']
+tree = ET.parse('stackoverflow.com/Posts.xml')
+stud = tree.findall('row')
+print(len(stud))
+for i in tqdm(stud):
+    x = i.attrib
+    mycol.insert_one(x)
