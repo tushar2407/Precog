@@ -4,9 +4,9 @@ from tqdm import tqdm
 from PIL import Image
 import numpy as np
 
-mask = np.array(Image.open('up1.png'))
+mask = np.array(Image.open('cloud.png'))
 
-file = open("outcomes/lis.txt", "r+")
+file = open("lis.txt", "r+")
 d = eval(file.read())
 d = sorted(d, key= lambda x : x[0], reverse=True)
 string = ""
@@ -21,4 +21,4 @@ stopwords = set(STOPWORDS)
 
 wordcloud = WordCloud(width = 3000, height = 2000, random_state=1, background_color='black', colormap='rainbow', collocations=False, stopwords = STOPWORDS, mask=mask).generate(string)
 
-wordcloud.to_file("outcomes/tag_wordcloud.jpg")
+wordcloud.to_file("tag_wordcloud.jpg")
