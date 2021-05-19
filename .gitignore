@@ -4,3 +4,6 @@ Devansh/
 Devansh.zip
 .env
 **/.data/*
+*.json
+*.csv
+**/__pycache__/*
