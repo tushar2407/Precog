@@ -34,3 +34,28 @@ def eval_numerical_gradient(f, x):
         itr.iternext()
 
     return grad
+
+'''
+CIFAR-10 dataset
+'''
+
+
+def CIFAR_10_Loss(W):
+    return L(X_train, Y_train, W) ## Loss function depends on the type of classifier you wish to use
+
+W = np.random.rand(10,3073) * 0.001 # Random weight vector
+df = eval_numerical_gradient(CIFAR_10_Loss, W)
+
+## The gradient tells us the slope along every dimension
+loss_original = CIFAR_10_Loss(W)
+print(f"original loss : {loss_original}")
+
+for step_size_log in [ -10,-9,-8,-7,-6,-5,-4,-3,-2,-1]:
+    step_size =  10 ** step_size_log
+
+    W_new = W - df*step_size
+
+    loss_new = CIFAR_10_Loss(W_new)
+
+    print(f"for step size {step_size} new loss is {loss_new")
+
